@@ -1,0 +1,6 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/testdb
+spring.datasource.username=root
+spring.datasource.password=Nagamine1982
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.characterEncoding=UTF-8
+spring.datasource.serverTimezone=JST
