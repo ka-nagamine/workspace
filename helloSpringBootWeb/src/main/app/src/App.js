@@ -41,10 +41,10 @@ class App extends Component {
         Content = (() => <Total pageSet={() => { this.setPrePage(); }} />);
         ListContent = (() => '');
         break;
-      default :
+      default:
         Content = (() => <Cal pageSet={() => { this.setNextPage(); }} />);
         ListContent = (() => <Todo />);
-        break;        
+        break;
     }
 
 
