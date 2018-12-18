@@ -1,4 +1,4 @@
-package com.mysql;
+package com.example.demo;
 
 import lombok.Data;
 

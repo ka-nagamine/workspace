@@ -81,15 +81,17 @@
 						</goals>
 					</execution>
 
+<!--
 					<execution>
 						<id>yarn install</id>
 						<goals>
 							<goal>yarn</goal>
 						</goals>
 						<configuration>
-							<arguments>install</arguments>
+							<arguments>install </arguments>
 						</configuration>
 					</execution>
+-->
 
 					<execution>
 						<id>Frontend production build</id>
@@ -98,7 +100,7 @@
 							<goal>yarn</goal>
 						</goals>
 						<configuration>
-							<arguments>run build</arguments>
+							<arguments>run build --ignore-engines</arguments>
 						</configuration>
 					</execution>
 				</executions>

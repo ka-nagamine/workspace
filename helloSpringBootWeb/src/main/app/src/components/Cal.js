@@ -44,7 +44,7 @@ export default class Cal extends React.Component {
                 <form method='post' action="/index2" onSubmit={doSubmit}>
                     {/* <input type='text' onChange={elm1 => this.setState({ num1: elm1.target.value })} /> */}
                     <input type='text' name='numInput1' value={this.state.num1} onChange={doChange} />
-                    <input type='text' onChange={elm2 => this.setState({ num2: elm2.target.value })} />
+                    <input type='text' name='name' onChange={elm2 => this.setState({ num2: elm2.target.value })} />
                     {/* <Button variant='contained' color='primary' onClick={() => this.props.addTodo(this.state.todo)}>追加</Button><br /> */}
                     <Button type='submit' variant='contained' color='primary' onClick={() => this.handleSubmit()}>計算結果</Button><br />
                     <input type='submit' value='java通信'/><br />

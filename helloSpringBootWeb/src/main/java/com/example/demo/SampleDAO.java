@@ -1,26 +1,26 @@
-package com.mysql;
+package com.example.demo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import com.mysql.SampleDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
+
+import com.mysql.SampleDTO;
 
 @EnableAutoConfiguration
 @ComponentScan
-public class App {
+@Service
+public class SampleDAO {
 	@Autowired
 	private JdbcTemplate jdbc;
-//	private SampleDao sampleDTO;
 
-	public void method() {
+	public void selectAll() {
 
 		List<SampleDTO> list = jdbc.query("SELECT * FROM TBL_TEST", new RowMapper<SampleDTO>() {
 			public SampleDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -39,7 +39,15 @@ public class App {
 		}
 	}
 
-	public void add() {
+	public void add(int id,String name) {
+
+		System.out.println("追加します");
+		SampleDTO reqDTO = new SampleDTO();
+		reqDTO.setId(id);
+		reqDTO.setName(name);
+
+		jdbc.update("insert into TBL_TEST(id, name) values(? , ?)", reqDTO.getId(), reqDTO.getName());
+		jdbc.update("insert into cptest(id, name) values(? , ?)", reqDTO.getId(), reqDTO.getName());
 
 		List<SampleDTO> list = jdbc.query("SELECT * FROM TBL_TEST", new RowMapper<SampleDTO>() {
 			public SampleDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -49,19 +57,10 @@ public class App {
 				return sampleDTO;
 			}
 		});
-		// List<Map<String, Object>> list = jdbc.queryForList("SELECT * FROM TBL_TEST");
-		// list.forEach(System.out::println);
 		for (SampleDTO sample : list) {
 			System.out.println("id:" + sample.getId());
 			System.out.println("name:" + sample.getName());
 
-		}
-	}
-
-	public static void main(String[] args) {
-		try (ConfigurableApplicationContext ctx = SpringApplication.run(App.class, args)) {
-			App m = ctx.getBean(App.class);
-			m.method();
 		}
 	}
 }
