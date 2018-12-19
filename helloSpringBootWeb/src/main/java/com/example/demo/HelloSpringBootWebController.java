@@ -15,29 +15,29 @@ public class HelloSpringBootWebController {
 	@Autowired
 	private SampleDAO app;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index_sample", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mv) {
-		mv.setViewName("index");
+		mv.setViewName("index_sample");
 		return mv;
 	}
 
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
 	public ModelAndView send(@RequestParam("inputvalue") String inputvalue, ModelAndView mv) {
-		mv.setViewName("result");
+		mv.setViewName("result_sample");
 		mv.addObject("message", inputvalue);
 		return mv;
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView indexReact(ModelAndView mv) {
-		mv.setViewName("index2");
+		mv.setViewName("../static/index");
 		return mv;
 	}
 
 	@RequestMapping(value = "/index2", method = RequestMethod.POST)
 	public ModelAndView indexReact(@RequestParam("numInput1") int numInput1, @RequestParam("name") String name,
 			ModelAndView mv) {
-		mv.setViewName("result2");
+		mv.setViewName("../static/index");
 		System.out.println("入力値1" + numInput1);
 		System.out.println("入力値2" + name);
         app.add(numInput1, name);
