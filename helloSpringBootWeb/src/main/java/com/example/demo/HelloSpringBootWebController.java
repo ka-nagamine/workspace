@@ -22,11 +22,17 @@ public class HelloSpringBootWebController {
 	}
 
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
-	public ModelAndView send(@RequestParam("inputvalue") String inputvalue, ModelAndView mv) {
-		mv.setViewName("result_sample");
-		mv.addObject("message", inputvalue);
-		return mv;
-	}
+    public ModelAndView send(@RequestParam("inputvalue") String inputvalue, ModelAndView mv) {
+        mv.setViewName("result_sample");
+        mv.addObject("message", inputvalue);
+        return mv;
+    }
+
+    @RequestMapping(value = "/*", method = RequestMethod.GET)
+    public ModelAndView sampleReact(ModelAndView mv) {
+        mv.setViewName("../static/index");
+        return mv;
+    }
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView indexReact(ModelAndView mv) {
