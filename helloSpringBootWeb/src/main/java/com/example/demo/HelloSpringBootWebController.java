@@ -15,6 +15,8 @@ public class HelloSpringBootWebController {
 
 	@Autowired
 	private SampleDAO app;
+	@Autowired
+	private UserInfoDAO user;
 
 	@RequestMapping(value = "/index_sample", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mv) {
@@ -23,17 +25,17 @@ public class HelloSpringBootWebController {
 	}
 
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
-    public ModelAndView send(@RequestParam("inputvalue") String inputvalue, ModelAndView mv) {
-        mv.setViewName("result_sample");
-        mv.addObject("message", inputvalue);
-        return mv;
-    }
+	public ModelAndView send(@RequestParam("inputvalue") String inputvalue, ModelAndView mv) {
+		mv.setViewName("result_sample");
+		mv.addObject("message", inputvalue);
+		return mv;
+	}
 
-    @RequestMapping(value = "/*", method = RequestMethod.GET)
-    public ModelAndView sampleReact(ModelAndView mv) {
-        mv.setViewName("../static/index");
-        return mv;
-    }
+	@RequestMapping(value = "/*", method = RequestMethod.GET)
+	public ModelAndView sampleReact(ModelAndView mv) {
+		mv.setViewName("../static/index");
+		return mv;
+	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView indexReact(ModelAndView mv) {
@@ -47,10 +49,10 @@ public class HelloSpringBootWebController {
 		mv.setViewName("../static/index");
 		System.out.println("入力値1" + numInput1);
 		System.out.println("入力値2" + name);
-        app.add(numInput1, name);
+		app.add(numInput1, name);
 
-        mv.addObject("id", numInput1);
-        mv.addObject("name", name);
+		mv.addObject("id", numInput1);
+		mv.addObject("name", name);
 		return mv;
 	}
 
@@ -63,6 +65,25 @@ public class HelloSpringBootWebController {
 		app.mailReg(mailAddress, pass);
 
 		mv.addObject("mailAddress", mailAddress);
+		mv.addObject("pass", pass);
+		return mv;
+	}
+
+	@PostMapping(value = "/login")
+	public ModelAndView login(@RequestParam("id") String id, @RequestParam("pass") String pass, ModelAndView mv) {
+		mv.setViewName("../static/index");
+		System.out.println("入力値1：" + id);
+		System.out.println("入力値2：" + pass);
+		boolean isAuth = user.login(id, pass);
+		System.out.println("ログイン結果：" + isAuth);
+		String authResult = "";
+		if (isAuth) {
+			authResult = "ログイン成功";
+		} else {
+			authResult = "ログイン失敗";
+		}
+		mv.addObject("auth", authResult);
+		mv.addObject("id", id);
 		mv.addObject("pass", pass);
 		return mv;
 	}

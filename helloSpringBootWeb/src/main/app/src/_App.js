@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText' 
-
 import './App.css';
 import Todo from './containers/Todo';
+// import Todo_1 from './containers/Todo_1';
 import Cal from './containers/Cal';
 import Java from './containers/JavaDB';
 import Total from './containers/Total';
 import Mail from './containers/MailReg';
-import Login from './containers/Login';
 import { BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 
 class App extends Component {
@@ -55,22 +51,13 @@ class App extends Component {
 
     const Home = () => (
       <div>
-        <h1>どの開発ページへ遷移する？</h1>
+      <h1>どの開発ページへ遷移する？</h1>
         <ui>
           <li><a href='/list'>リスト追加</a></li>
           <li><a href='/add'>足し算</a></li>
           <li><a href='/java'>Java通信</a></li>
           <li><a href='/mailReg'>メール登録</a></li>
-          <li><a href='/Login'>ログイン</a></li>
         </ui>
-      {/* どの開発ページへ遷移する？
-        <List>
-          <ListItem><ListItemText><a href='/list'>リスト追加</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/add'>足し算</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/java'>Java通信</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/mailReg'>メール登録</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/mailReg'>メール登録</a> </ListItemText></ListItem>
-        </List> */}
       </div>
     )
 
@@ -83,7 +70,6 @@ class App extends Component {
           <Route path="/add" component={Content} />
           <Route path="/java" component={Java} />
           <Route path="/mailReg" component={Mail} />
-          <Route path="/login" component={Login} />
         </div>
       </BrowserRouter>
       // <div className="App">

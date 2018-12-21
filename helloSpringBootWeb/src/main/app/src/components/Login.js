@@ -2,15 +2,16 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import InputBase from '@material-ui/core/InputBase';
 // import { Field, reduxForm } from 'redux-form';
 
 const propTypes = {
     isAddMode: PropTypes.bool.isRequired,
-    mailAddress: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     pass: PropTypes.string.isRequired,
 };
 
-export default class MailReg extends React.Component {
+export default class Login extends React.Component {
 
     handleSubmitJava(e) {
         // window.alert('メールアドレスを登録します')
@@ -19,8 +20,8 @@ export default class MailReg extends React.Component {
 
     doChange(e) {
         const curValue = e.target.value
-        this.setState({ mailAddress: curValue })
-        if (this.state.mailAddress.length > 3 && this.state.pass.length > 6) {
+        this.setState({ id: curValue })
+        if (this.state.id.length > 0 && this.state.pass.length > 6) {
             this.state.isAddMode = true
         } else {
             this.state.isAddMode = false
@@ -30,7 +31,7 @@ export default class MailReg extends React.Component {
     doChange2(e) {
         const curValue = e.target.value
         this.setState({ pass: curValue })
-        if (this.state.mailAddress.length > 3 && this.state.pass.length > 6) {
+        if (this.state.id.length > 0 && this.state.pass.length > 6) {
             this.state.isAddMode = true
         } else {
             this.state.isAddMode = false
@@ -44,23 +45,24 @@ export default class MailReg extends React.Component {
         // name属性値によって処理を分岐
         switch (type) {
             // name属性値がmailだった場合
-            case "mailAddress":
-                this.setState({ mailAddress: curValue })
+            case "id":
+                this.setState({ id: curValue })
                 break;
             case "pass":
                 this.setState({ pass: curValue })
                 break;
         }
-        if (this.state.mailAddress.length > 0 && this.state.pass.length > 0) {
+        if (this.state.id.length > 0 && this.state.pass.length > 0) {
             this.state.isAddMode = true
         }
 
     }
 
     state = {
-        mailAddress: '',
+        id: '',
         pass: '',
-        isAddMode: false
+        isAddMode: false,
+        auth: ''
     }
 
     render() {
@@ -81,34 +83,19 @@ export default class MailReg extends React.Component {
         const doSubmit = (e) => this.handleSubmitJava(e)
         return (
             <div>
-                <form method='post' action="/mailReg" onSubmit={doSubmit}>
-                    <TextField type='text'
-                        name='mailAddress'
-                        style={{ width: '500px' }}
-                        value={this.state.mailAddress}
-                        onChange={doChange}
-                        label="メールアドレス"
-                        variant="outlined"
-                        margin="normal"
-                    />
+                <form method='post' action="/login" onSubmit={doSubmit}>
+                    <TextField type='text' name='id' style={{ width: '250px' }} value={this.state.id} onChange={doChange} label="ユーザID" variant="outlined" margin="normal" />
                     <br />
-                    <TextField type='text'
-                        name='pass'
-                        size='20'
-                        value={this.state.pass}
-                        onChange={doChange2}
-                        label="パスワード"
-                        variant="outlined"
-                        margin="normal" />
+                    <TextField type='text' name='pass' value={this.state.pass} onChange={doChange2} label="パスワード" variant="outlined" margin="normal" />
                     <br />
                     <Button type='submit'
-                        label='登録'
                         variant='contained'
                         color='secondary'
                         style={(this.state.isAddMode) ? styles.registerBtn.isAdd : styles.registerBtn.isNotAdd}>
-                        登録
+                        ログイン
                     </Button>
-
+                    <br />
+                    <InputBase name='auth' value={this.state.auth} />
                     <br />
                 </form>
             </div>
@@ -116,4 +103,4 @@ export default class MailReg extends React.Component {
     }
 }
 
-MailReg.propTypes = propTypes;
+Login.propTypes = propTypes;

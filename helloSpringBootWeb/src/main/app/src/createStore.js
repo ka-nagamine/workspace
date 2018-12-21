@@ -3,6 +3,7 @@ import logger from "redux-logger";
 import { todoReducer } from "./reducers/Todo";
 import { calReducer } from "./reducers/Cal";
 import { mailRegReducer } from "./reducers/MailReg";
+import { loginReducer } from "./reducers/Login";
 import { pageSetReducer } from "./reducers/PageSet";
 
 export default function createStore() {
@@ -11,6 +12,7 @@ export default function createStore() {
             todo: todoReducer,
             cal: calReducer,
             mailReg: mailRegReducer,
+            login: loginReducer,
             // pageset: pageSetReducer,
         }),
         applyMiddleware(

@@ -2959,3 +2959,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2018-12-18 16:42:43,115 [Worker-62: ワークスペースをビルド中] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\sts-bundle\sts-3.9.6.RELEASE\workspace\helloSpringBootWeb\src\test\resources
 2018-12-18 16:42:43,117 [Worker-62: ワークスペースをビルド中] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-12-18 16:42:43,118 [Worker-62: ワークスペースをビルド中] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 14 resources
+2018-12-21 15:19:03,199 [Worker-5: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
