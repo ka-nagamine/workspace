@@ -39,7 +39,7 @@ public class SampleDAO {
 		}
 	}
 
-	public void add(int id,String name) {
+	public void add(int id, String name) {
 
 		System.out.println("追加します");
 		SampleDTO reqDTO = new SampleDTO();
@@ -60,6 +60,31 @@ public class SampleDAO {
 		for (SampleDTO sample : list) {
 			System.out.println("id:" + sample.getId());
 			System.out.println("name:" + sample.getName());
+
+		}
+	}
+
+	
+	public void mailReg(String id, String name) {
+
+		System.out.println("追加します");
+		MailDTO reqDTO = new MailDTO();
+		reqDTO.setMailAddress(id);
+		reqDTO.setPass(name);
+
+		jdbc.update("insert into mail(mailAddress, pass) values(? , ?)", reqDTO.getMailAddress(), reqDTO.getPass());
+
+		List<MailDTO> list = jdbc.query("SELECT * FROM mail", new RowMapper<MailDTO>() {
+			public MailDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MailDTO mailDTO = new MailDTO();
+				mailDTO.setMailAddress(rs.getString("mailAddress"));
+				mailDTO.setPass(rs.getString("pass"));
+				return mailDTO;
+			}
+		});
+		for (MailDTO mail : list) {
+			System.out.println("mailAddress:" + mail.getMailAddress());
+			System.out.println("pass:" + mail.getPass());
 
 		}
 	}

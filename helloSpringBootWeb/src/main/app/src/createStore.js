@@ -2,6 +2,7 @@ import { createStore as reduxCreateStore, applyMiddleware, combineReducers } fro
 import logger from "redux-logger";
 import { todoReducer } from "./reducers/Todo";
 import { calReducer } from "./reducers/Cal";
+import { mailRegReducer } from "./reducers/MailReg";
 import { pageSetReducer } from "./reducers/PageSet";
 
 export default function createStore() {
@@ -9,6 +10,7 @@ export default function createStore() {
         combineReducers({
             todo: todoReducer,
             cal: calReducer,
+            mailReg: mailRegReducer,
             // pageset: pageSetReducer,
         }),
         applyMiddleware(

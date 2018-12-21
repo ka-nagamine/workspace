@@ -3,8 +3,9 @@ import './App.css';
 import Todo from './containers/Todo';
 // import Todo_1 from './containers/Todo_1';
 import Cal from './containers/Cal';
-import Java from './components/JavaDB';
+import Java from './containers/JavaDB';
 import Total from './containers/Total';
+import Mail from './containers/MailReg';
 import { BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 
 class App extends Component {
@@ -32,7 +33,6 @@ class App extends Component {
     //  メイン部分のコンポーネントの入れ物
     let Content = null; // デフォルトでは何も表示しない
     let ListContent = null; // デフォルトでは何も表示しない
-    let JavaContent = null; // デフォルトでは何も表示しない
 
     switch (currentPage) {
       case 1:
@@ -46,7 +46,6 @@ class App extends Component {
       default:
         Content = (() => <Cal pageSet={() => { this.setNextPage(); }} />);
         ListContent = (() => <Todo />);
-        JavaContent = (() => <Java />);
         break;
     }
 
@@ -69,8 +68,8 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/list" component={ListContent} />
           <Route path="/add" component={Content} />
-          <Route path="/java" component={JavaContent} />
-          <Route path="/mailReg" component={Content} />
+          <Route path="/java" component={Java} />
+          <Route path="/mailReg" component={Mail} />
         </div>
       </BrowserRouter>
       // <div className="App">

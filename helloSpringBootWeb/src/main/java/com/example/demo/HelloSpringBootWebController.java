@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,4 +54,16 @@ public class HelloSpringBootWebController {
 		return mv;
 	}
 
+	@PostMapping(value = "/mailReg")
+	public ModelAndView mailReg(@RequestParam("mailAddress") String mailAddress, @RequestParam("pass") String pass,
+			ModelAndView mv) {
+		mv.setViewName("../static/index");
+		System.out.println("入力値1" + mailAddress);
+		System.out.println("入力値2" + pass);
+		app.mailReg(mailAddress, pass);
+
+		mv.addObject("mailAddress", mailAddress);
+		mv.addObject("pass", pass);
+		return mv;
+	}
 }
