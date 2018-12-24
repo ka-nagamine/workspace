@@ -1,16 +1,16 @@
 const initialState = {
+    id: '',
+    pass: '',
     isAddMode: false,
+    auth: 'ログイン前',
 }
 
 export const loginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD':
-            // const num1 = parseInt(action.payload.mailAddress);
-            // const num2 = parseInt(action.payload.num2);
-            // // stateを複製して追加
+        case 'LOGIN':
             const newState = Object.assign({}, state);
-            // newState.total = num1 + num2;
-            // console.log(newState.total);
+            newState.auth = action.auth;
+            console.log('redu:' + newState.auth);
             return newState;
         default:
             return state;

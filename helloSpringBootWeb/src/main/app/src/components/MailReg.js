@@ -94,7 +94,6 @@ export default class MailReg extends React.Component {
                     <br />
                     <TextField type='text'
                         name='pass'
-                        size='20'
                         value={this.state.pass}
                         onChange={doChange2}
                         label="パスワード"

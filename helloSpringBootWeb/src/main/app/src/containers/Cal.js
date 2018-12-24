@@ -13,9 +13,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        add: (num1,num2) => dispatch(actions.add(num1,num2)),
+        add: (num1, num2) => dispatch(actions.add(num1, num2)),
     }
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cal)

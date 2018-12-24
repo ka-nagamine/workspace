@@ -1,5 +1,6 @@
 import { createStore as reduxCreateStore, applyMiddleware, combineReducers } from "redux";
 import logger from "redux-logger";
+import thunk from 'redux-thunk';
 import { todoReducer } from "./reducers/Todo";
 import { calReducer } from "./reducers/Cal";
 import { mailRegReducer } from "./reducers/MailReg";
@@ -17,6 +18,7 @@ export default function createStore() {
         }),
         applyMiddleware(
             logger,
+            thunk
         )
     );
 

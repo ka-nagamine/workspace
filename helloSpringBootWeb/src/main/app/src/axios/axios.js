@@ -1,0 +1,11 @@
+import axios from 'axios';
+
+export default axios.create({
+    baseURL: 'http://localhost:8080/',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    // headers: {
+    //     'Content-Type': 'application/json',
+    //     'X-Requested-With': 'XMLHttpRequest'
+    // },
+    // responseType: 'json'
+});

@@ -1,7 +1,11 @@
 package com.example.demo;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @ComponentScan
+@ResponseBody
 public class HelloSpringBootWebController {
 
 	@Autowired
@@ -69,22 +74,60 @@ public class HelloSpringBootWebController {
 		return mv;
 	}
 
+	// @PostMapping(value = "/login")
+	// public String login(@RequestParam("userid") String id,
+	// @RequestParam("password") String pass, ModelAndView mv) {
+	// System.out.println("入力値1：" + id);
+	// System.out.println("入力値2：" + pass);
+	// boolean isAuth = user.login(id, pass);
+	// System.out.println("ログイン結果：" + isAuth);
+	// String authResult = "";
+	// if (isAuth) {
+	// authResult = "ログイン成功";
+	// } else {
+	// authResult = "ログイン失敗";
+	// }
+	// mv.addObject("auth", authResult);
+	// mv.addObject("id", id);
+	// mv.addObject("pass", pass);
+	// return authResult;
+	// }
+
+	// @PostMapping(value = "/login")
+	// public ModelAndView login(@RequestParam("userid") String id,
+	// @RequestParam("password") String pass,
+	// ModelAndView mv) {
+	// mv.setViewName("../static/index");
+	// System.out.println("入力値1：" + id);
+	// System.out.println("入力値2：" + pass);
+	// boolean isAuth = user.login(id, pass);
+	// System.out.println("ログイン結果：" + isAuth);
+	// String authResult = "";
+	// if (isAuth) {
+	// authResult = "ログイン成功";
+	// mv.setViewName("rs");
+	// } else {
+	// authResult = "ログイン失敗";
+	// mv.setViewName("rs2");
+	// }
+	// mv.addObject("auth", authResult);
+	// mv.addObject("id", id);
+	// mv.addObject("pass", pass);
+	// return mv;
+	// }
+
 	@PostMapping(value = "/login")
-	public ModelAndView login(@RequestParam("id") String id, @RequestParam("pass") String pass, ModelAndView mv) {
-		mv.setViewName("../static/index");
-		System.out.println("入力値1：" + id);
-		System.out.println("入力値2：" + pass);
-		boolean isAuth = user.login(id, pass);
-		System.out.println("ログイン結果：" + isAuth);
+	public ResponseEntity<String> login(@RequestParam("userid") String id, @RequestParam("password") String pass) { // ←ポイントです
+
 		String authResult = "";
+		boolean isAuth = user.login(id, pass);
 		if (isAuth) {
-			authResult = "ログイン成功";
+			authResult = "ログインに成功しました。";
 		} else {
-			authResult = "ログイン失敗";
+			authResult = "ログインに失敗しました。";
 		}
-		mv.addObject("auth", authResult);
-		mv.addObject("id", id);
-		mv.addObject("pass", pass);
-		return mv;
+
+		return ResponseEntity.ok(authResult);// ←ポイントです！！
 	}
+
 }
