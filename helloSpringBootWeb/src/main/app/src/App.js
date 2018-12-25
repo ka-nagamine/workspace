@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+// import List from '@material-ui/core/List'
+// import ListItem from '@material-ui/core/ListItem'
+// import ListItemText from '@material-ui/core/ListItemText'
 
 import './App.css';
 import Todo from './containers/Todo';
@@ -10,8 +10,10 @@ import Java from './containers/JavaDB';
 import Total from './containers/Total';
 import Mail from './containers/MailReg';
 import Login from './containers/Login';
+import Top from './components/Top';
+import Logout from './components/Logout';
 
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +32,6 @@ class App extends Component {
   }
 
   render() {
-
     // メニューの選択状態
     // const currentPage = this.state.currentPage; // （1）
     const currentPage = this.state.page; // （1）
@@ -63,15 +64,9 @@ class App extends Component {
           <li><a href='/java'>Java通信</a></li>
           <li><a href='/mailReg'>メール登録</a></li>
           <li><a href='/Login'>ログイン</a></li>
+          <li><a href='/Top'>認証</a></li>
+          <li><a href='/Logout'>ログアウト</a></li>
         </ui>
-        {/* どの開発ページへ遷移する？
-        <List>
-          <ListItem><ListItemText><a href='/list'>リスト追加</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/add'>足し算</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/java'>Java通信</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/mailReg'>メール登録</a> </ListItemText></ListItem>
-          <ListItem><ListItemText><a href='/mailReg'>メール登録</a> </ListItemText></ListItem>
-        </List> */}
       </div>
     )
 
@@ -85,6 +80,8 @@ class App extends Component {
           <Route path="/java" component={Java} />
           <Route path="/mailReg" component={Mail} />
           <Route path="/login" component={Login} />
+          <Route path="/Top" component={Top} />
+          <Route path="/Logout" component={Logout} />
         </div>
       </BrowserRouter>
       // <div className="App">

@@ -2,7 +2,7 @@ const initialState = {
     id: '',
     pass: '',
     isAddMode: false,
-    auth: 'ログイン前',
+    auth: '',
 }
 
 export const loginReducer = (state = initialState, action) => {

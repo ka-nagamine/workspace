@@ -21,9 +21,11 @@ export default class MailReg extends React.Component {
         const curValue = e.target.value
         this.setState({ mailAddress: curValue })
         if (this.state.mailAddress.length > 3 && this.state.pass.length > 6) {
-            this.state.isAddMode = true
+            this.setState({ isAddMode: true })
+            // this.state.isAddMode = true
         } else {
-            this.state.isAddMode = false
+            this.setState({ isAddMode: false })
+            // this.state.isAddMode = false
         }
     }
 
@@ -31,9 +33,11 @@ export default class MailReg extends React.Component {
         const curValue = e.target.value
         this.setState({ pass: curValue })
         if (this.state.mailAddress.length > 3 && this.state.pass.length > 6) {
-            this.state.isAddMode = true
+            this.setState({ isAddMode: true })
+            // this.state.isAddMode = true
         } else {
-            this.state.isAddMode = false
+            this.setState({ isAddMode: false })
+            // this.state.isAddMode = false
         }
     }
 
@@ -46,13 +50,16 @@ export default class MailReg extends React.Component {
             // name属性値がmailだった場合
             case "mailAddress":
                 this.setState({ mailAddress: curValue })
-                break;
+                break
             case "pass":
                 this.setState({ pass: curValue })
-                break;
+                break
+            default:
+                break
         }
         if (this.state.mailAddress.length > 0 && this.state.pass.length > 0) {
-            this.state.isAddMode = true
+            this.setState({ isAddMode: true })
+            // this.state.isAddMode = true
         }
 
     }
