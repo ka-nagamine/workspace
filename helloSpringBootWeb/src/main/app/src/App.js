@@ -12,6 +12,8 @@ import Mail from './containers/MailReg';
 import Login from './containers/Login';
 import Top from './components/Top';
 import Logout from './components/Logout';
+import Move from './components/Move';
+import Return from './components/Return';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -66,6 +68,7 @@ class App extends Component {
           <li><a href='/Login'>ログイン</a></li>
           <li><a href='/Top'>認証</a></li>
           <li><a href='/Logout'>ログアウト</a></li>
+          <li><a href='/Move'>画面遷移テスト</a></li>
         </ui>
       </div>
     )
@@ -82,6 +85,8 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/Top" component={Top} />
           <Route path="/Logout" component={Logout} />
+          <Route path="/Move" component={Move} />
+          <Route path="/Return" component={Return} />
         </div>
       </BrowserRouter>
       // <div className="App">

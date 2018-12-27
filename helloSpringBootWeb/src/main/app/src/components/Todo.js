@@ -1,10 +1,20 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router'
 
-export default class Todo extends React.Component {
+class Todo extends React.Component {
+    // static propTypes = {
+    //     history: PropTypes.object.isRequired
+    // }
     state = {
         todo: ''
     }
+
+    handleSubmit() {
+        this.props.history.push('/Return')
+    }
+
 
     render() {
         console.log(this.props);
@@ -16,6 +26,7 @@ export default class Todo extends React.Component {
             <div>
                 <input type="text" onChange={elm => this.setState({ todo: elm.target.value })} />
                 <Button variant="contained" color="primary" onClick={() => this.props.addTodo(this.state.todo)}>追加</Button><br />
+                <Button type='submit' variant='contained' color='primary' onClick={() => this.handleSubmit()}>TODOへ遷移</Button>
                 <ul>
                     {list}
                 </ul>
@@ -23,3 +34,5 @@ export default class Todo extends React.Component {
         );
     }
 }
+
+export default withRouter(Todo)
